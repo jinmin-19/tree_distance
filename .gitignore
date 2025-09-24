@@ -7,5 +7,5 @@ simulations/
 SINGER/
 
 
-scr/singer.py
-scr/run_singer.sh
+/scr/singer.py
+/scr/run_singer.sh

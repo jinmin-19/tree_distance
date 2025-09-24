@@ -136,5 +136,5 @@ def simple_OOA_sim(n,lens=1e6):
         #additional_nodes=additional_nodes,
         #coalescing_segments_only=False,
     )
-    new_ts = msprime.sim_mutations(new_ts, rate=1.25e-8)
+    new_ts = msprime.sim_mutations(new_ts, rate=1e-8)
     return new_ts
