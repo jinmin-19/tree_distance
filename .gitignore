@@ -1,0 +1,7 @@
+.myenv/
+myenv/
+build/
+.vscode/
+__pycache__/
+simulations/
+SINGER/
