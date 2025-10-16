@@ -38,6 +38,13 @@ def infer_ts(vcz_full_name,tree_full_name):
     inferred_ts=tsinfer.infer(vdata,recombination_rate=1e-8)
     inferred_ts.dump(f"{tree_full_name}-inferred.trees")
     print("tsinfer done")
+    print("Running tsdate")
+    simplified_ts = tsdate.preprocess_ts(inferred_ts)
+
+    redated_ts = tsdate.date(simplified_ts, mutation_rate=1e-8)
+
+    out_file = f"{tree_full_name}-inferred.tsdate.trees"
+    redated_ts.dump(out_file)
 
 
 def simulate_dump(model,number_individuals,num_replicates,tree_dir,vcz_dir,sequence_length=1e6):
