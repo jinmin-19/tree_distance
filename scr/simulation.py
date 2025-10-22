@@ -31,7 +31,7 @@ def dump_ts(ts,save_dir="./simulations/sim1/",vcz_dir="./simulations/sim1/",name
         print(f"[ERROR] bio2zarr failed for {name} with code {ret.returncode}") 
     else: 
         print(f"[OK] bio2zarr finished for {name}")
-def infer_ts(vcz_full_name,tree_full_name):
+def infer_ts(vcz_full_name,tree_full_name,rate=1e-8):
     #load zarr file, ancestral states and infer
     ancestral_states = np.load(f"{vcz_full_name}-AA.npy")
     vdata = tsinfer.VariantData(f"{vcz_full_name}.vcz", ancestral_states)
@@ -41,7 +41,7 @@ def infer_ts(vcz_full_name,tree_full_name):
     print("Running tsdate")
     simplified_ts = tsdate.preprocess_ts(inferred_ts)
 
-    redated_ts = tsdate.date(simplified_ts, mutation_rate=1e-8)
+    redated_ts = tsdate.date(simplified_ts, mutation_rate=rate)
 
     out_file = f"{tree_full_name}-inferred.tsdate.trees"
     redated_ts.dump(out_file)

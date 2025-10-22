@@ -65,7 +65,7 @@ demography.add_population_parameters_change(
 import msprime
 import tskit
 import math
-def simple_OOA_sim(n,lens=1e6):
+def simple_OOA_sim(n,lens=1e6,mut_rate=1e-8):
     # Times are provided in years, so we convert into generations.
     generation_time = 25
     T_OOA = 21.2e3 / generation_time
@@ -136,5 +136,5 @@ def simple_OOA_sim(n,lens=1e6):
         #additional_nodes=additional_nodes,
         #coalescing_segments_only=False,
     )
-    new_ts = msprime.sim_mutations(new_ts, rate=1e-8)
+    new_ts = msprime.sim_mutations(new_ts, rate=mut_rate)
     return new_ts
