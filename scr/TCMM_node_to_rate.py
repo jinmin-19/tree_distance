@@ -75,6 +75,7 @@ def compare_trees_pairwise_distances(tree1, tree2):
 	return MSE/total
 
 def lower_node_rate_map(tree: tskit.Tree, rates, dropped_index):
+	#return a dict: node_id -> rate of the upper branch
     index = -1
     node_to_rate = {}
     current = 0
