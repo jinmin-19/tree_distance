@@ -10,3 +10,5 @@ SINGER/
 /scr/run_singer.sh
 
 *.sh
+
+*.key
